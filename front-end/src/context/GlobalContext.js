@@ -22,7 +22,7 @@ function TasksProvider({ children }) {
 
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [datas]);
 
   const contextValue = {
     originalDatas,

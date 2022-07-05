@@ -10,26 +10,26 @@ const getAll = async (_req, res, next) => {
     }
 };
 
-const createTask = async (req, res, next) => {
-  const { taskName, statusTask } = req.body;
+const createTask = async (req, res) => {
   try {
-    const newTask = await taskService.createTask( taskName, statusTask )
+    const { name: taskName, status: statusTask } = req.body;
+    const newTask = await taskService.createTask({ taskName, statusTask });
     return res.status(201).json(newTask);
-  } catch (error) {
-    console.log(error.messsage);
-    next(error);
+  } catch (err) {
+    console.log(err);
   }
 }
 
-const updateTask = async (req, res, next) => {
-  const { id } = req.params;
-  const { taskName, statusTask } = req.body;
+const updateTask = async (req, res) => {
   try {
-    const updatedTask = await taskService.updateTask( id, taskName, statusTask );
+    const { id } = req.params;
+    const { name: taskName, status: statusTask } = req.body;
+
+    const updatedTask = await tasksServices.updateTask({ id, taskName, statusTask });
+
     return res.status(200).json(updatedTask);
-  } catch (error) {
-    console.log(error.messsage);
-    next(error);
+  } catch (err) {
+    console.log(err);
   }
 };
 

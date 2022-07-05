@@ -1,21 +1,7 @@
-import React, { useState,  useContext, useEffect } from 'react';
-import { GlobalContext } from '../context/Context';
-import fetchTasksAPI from '../../src/services/fetchAPI';
-const axios = require('axios').default;
+import React, { useState } from 'react';
+import axios from 'axios';
 
-function TodoForm(props) {
-
-  const {setDatas, datas} = useContext(GlobalContext);
-
-  useEffect(() => {
-    async function fetchTasks() {
-      const tasks = await fetchTasksAPI();
-      return  setDatas(tasks);
-    }
-    return fetchTasks()
-
-  }, [datas]);
-
+function TodoForm() {
   const [input, setInput] = useState();
   const [currentStatus, setCurrentStatus] = useState('pendente');
 
@@ -30,10 +16,10 @@ function TodoForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const request = await axios.get("http://localhost:3001/tasks");
-    const postRequest = axios.post('http://localhost:3001/tasks', {
-      taskName: input,
-      statusTask: currentStatus,
+   const request = await axios.get("http://localhost:3001/tasks");
+   const postRequest = axios.post('http://localhost:3001/tasks', {
+      name: input,
+      status: currentStatus,
     })
     console.log(request);
     console.log(postRequest);

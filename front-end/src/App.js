@@ -1,6 +1,6 @@
 import React from 'react';
-import TodoList from './components/TodoList';
-import TasksProvider from './context/Context';
+import TodoList from './components/toDoList';
+import TasksProvider from './context/GlobalContext';
 
 function App() {
   return (
