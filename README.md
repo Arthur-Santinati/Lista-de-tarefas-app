@@ -6,7 +6,8 @@ Neste projeto, desenvolvemos uma lista de tarefas integrando o backend com o fro
 ## Tecnologias usadas
 
 Criamos o front usando React, Context API e uso do estado;
-Utilizamos no back 
+Utilizamos no back o express para instanciar o servidor, o axios para requisição dos metódos e o mySql para armazenar o banco;
+E no geral usamos o docker para deixar a aplicação usável em qualquer máquina;
 
 ## Para rodar o projeto na sua máquina
 docker-compose up --build -d
