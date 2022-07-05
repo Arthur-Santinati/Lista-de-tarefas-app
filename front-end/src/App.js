@@ -1,10 +1,14 @@
-import GetTasks from "./components/tasks";
+import React from 'react';
+import TodoList from './components/TodoList';
+import TasksProvider from './context/Context';
 
 function App() {
   return (
-    <div>
-      <GetTasks></GetTasks>
-    </div>
+    <TasksProvider>
+      <div className="todo-app">
+        <TodoList />
+      </div>
+    </TasksProvider>
   );
 }
 

@@ -6,19 +6,17 @@ const getAll = async () => {
   return tasks;
 };
 
-const createTask = async ({ taskName, statusTask }) => {
+const createTask = async ( taskName, statusTask ) => {
   const query = 'INSERT INTO Ebytr.Tasks (taskName, statusTask) VALUES (?, ?)';
-
+  console.log('erro', taskName, statusTask);
   const [{ insertId }] = await connection.execute(query, [taskName, statusTask]);
-
   return { id: insertId, taskName, statusTask };
 };
 
-const updateTask = async ({ id, taskName, statusTask }) => {
+const updateTask = async ( id, taskName, statusTask ) => {
   const query = 'UPDATE Ebytr.Tasks SET taskName = ?, statusTask = ? WHERE id = ?';
 
   await connection.execute(query, [taskName, statusTask, id]);
-
   return { id, taskName, statusTask };
 };
 

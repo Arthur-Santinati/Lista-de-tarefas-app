@@ -1,13 +1,9 @@
-import axios from 'axios';
+const URL = 'http://localhost:3001/tasks';
 
-const DEFAULT_TIMEOUT = 30000;
-class getTasks {
-  constructor({ url = 'http://localhost:3001/tasks', timeout = DEFAULT_TIMEOUT }) {
-    this.http = axios.create({
-      baseURL: url,
-      timeout,
-    });
-  }
-}
+const gettingTasks = async () => {
+  const response = await fetch(URL);
+  const data = await response.json();
+  return data;
+};
 
-export default getTasks;
+export default gettingTasks; 

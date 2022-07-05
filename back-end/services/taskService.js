@@ -1,21 +1,18 @@
 const tasksModel = require('../models/taskModel');
 
 const getAll = async () => {
-    const tasks = await tasksModel.getAll();
-    return tasks;
+  const tasks = await tasksModel.getAll();
+  return tasks;
 };
 
 const createTask = async ( taskName, statusTask ) => {
-  await tasksModel.createTask({ taskName, statusTask });
+  const newTask = await tasksModel.createTask( taskName, statusTask );
   
-  return {
-    taskName,
-    statusTask,
-  };
+  return newTask;
 }
 
-const updateTask = async ({ id, taskName, statusTask }) => {
-  const updatedTask = await tasksModel.updateTask({ id, taskName, statusTask });
+const updateTask = async ( id, taskName, statusTask ) => {
+  const updatedTask = await tasksModel.updateTask( id, taskName, statusTask );
 
   return updatedTask;
 };

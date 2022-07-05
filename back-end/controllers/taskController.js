@@ -22,11 +22,11 @@ const createTask = async (req, res, next) => {
 }
 
 const updateTask = async (req, res, next) => {
-  const { id, taskName, statusTask } = req.body;
-
+  const { id } = req.params;
+  const { taskName, statusTask } = req.body;
   try {
-    const updatedTask = await taskService.updateTask({ id, taskName, statusTask });
-    return res.status(201).json(updatedTask);
+    const updatedTask = await taskService.updateTask( id, taskName, statusTask );
+    return res.status(200).json(updatedTask);
   } catch (error) {
     console.log(error.messsage);
     next(error);
@@ -38,12 +38,12 @@ const deleteTask = async (req, res, next) => {
 
   try { 
     const taskDeleted = await taskService.deleteTask(id);
-    return res.status(201).json(taskDeleted);
+    const message = 'Task was removed.'
+    return res.status(200).json({ message, status: taskDeleted });
   } catch (error) {
     console.log(error.messsage);
     next(error);
   }
-  
 };
 
 module.exports = {
